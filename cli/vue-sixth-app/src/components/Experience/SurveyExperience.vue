@@ -60,7 +60,7 @@ export default {
           rating: this.rating,
         };
 
-        fetch("https://vue-http-demo-c26e6-default-rtdb.asia-southeast1.firebasedatabase.app/surveys.json", {
+        fetch(`${process.env.VUE_APP_FIREBASE_URL}/surveys.json`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

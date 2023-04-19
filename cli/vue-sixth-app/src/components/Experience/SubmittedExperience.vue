@@ -49,7 +49,7 @@ export default {
     loadData() {
       this.isLoading = true;
       this.isError = false;
-      fetch("https://vue-http-demo-c26e6-default-rtdb.asia-southeast1.firebasedatabase.app/surveys.json")
+      fetch(`${process.env.VUE_APP_FIREBASE_URL}/surveys.json`)
         .then((response) => {
           if (response.ok) {
             return response.json();
