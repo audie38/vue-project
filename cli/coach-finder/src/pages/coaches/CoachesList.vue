@@ -87,13 +87,11 @@ export default {
     },
     isDisabled() {
       const coaches = this.$store.getters["coach/coaches"];
-      const totalFilteredCoach = coaches
-        .filter((coach) => {
-          if (this.activeFilters.some((c) => coach.areas.includes(c))) {
-            return true;
-          }
-        })
-        .slice(this.dataStartIndex, this.dataStartIndex + this.perPage).length;
+      const totalFilteredCoach = coaches.filter((coach) => {
+        if (this.activeFilters.some((c) => coach.areas.includes(c))) {
+          return true;
+        }
+      }).length;
       let numOfPage = 1;
       if (totalFilteredCoach > this.navLimit) {
         numOfPage = Math.ceil(totalFilteredCoach / this.perPage);

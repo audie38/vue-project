@@ -5,8 +5,8 @@
   </base-card>
   <base-card>
     <h2 class="fw-bold">Interested? Reach out now!</h2>
-    <router-link class="btn btn-dark w-25" :to="coachContactLink">Contact</router-link>
-    <router-view></router-view>
+    <button @click="isContact = !isContact" class="btn btn-dark w-25">Contact</button>
+    <ContactCoach v-if="isContact" />
   </base-card>
   <base-card>
     <div class="d-flex justify-content-start align-items-center mb-1">
@@ -17,12 +17,18 @@
 </template>
 
 <script>
+import ContactCoach from "../requests/ContactCoach.vue";
+
 export default {
   name: "CoachDetail",
+  components: {
+    ContactCoach,
+  },
   props: ["id"],
   data() {
     return {
       coach: {},
+      isContact: false,
       badgeClass: "badge p-2 me-1 text-uppercase text-bg-",
     };
   },
@@ -55,6 +61,7 @@ export default {
     },
   },
   created() {
+    this.isContact = this.$route.fullPath.includes("/contact");
     this.coach = this.$store.getters["coach/coaches"].find((x) => x.id == this.id);
   },
 };
