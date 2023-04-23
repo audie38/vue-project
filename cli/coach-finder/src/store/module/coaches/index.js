@@ -6,6 +6,7 @@ const coachModule = {
   namespaced: true,
   state() {
     return {
+      isCoach: false,
       coaches: [
         {
           id: 1,
