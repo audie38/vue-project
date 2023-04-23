@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      areaFilters: ["frontend", "backend", "career"],
+      activeFilters: ["frontend", "backend", "career"],
     };
   },
   computed: {
@@ -36,7 +36,7 @@ export default {
     filteredCoaches() {
       const coaches = this.$store.getters["coach/coaches"];
       return coaches.filter((coach) => {
-        if (this.areaFilters.some((area) => coach.areas.includes(area))) {
+        if (this.activeFilters.some((c) => coach.areas.includes(c))) {
           return true;
         }
       });
@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     setFilter(filter) {
-      this.areaFilters = filter;
+      this.activeFilters = filter;
     },
   },
 };
