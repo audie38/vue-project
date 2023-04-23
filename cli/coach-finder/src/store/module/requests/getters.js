@@ -5,4 +5,13 @@ export default {
   hasRequest(state) {
     return state.requests.length > 0;
   },
+  requests(state, getters, rootState, rootGetters) {
+    const coachId = rootGetters.userId;
+    console.log(coachId);
+    console.log(state.requests.filter((req) => req.coachId == coachId));
+    return state.requests.filter((req) => req.coachId == coachId);
+  },
+  hastRequestCoach(state, getters) {
+    return getters.requests && getters.requests.length > 0;
+  },
 };

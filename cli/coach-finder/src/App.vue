@@ -1,5 +1,6 @@
 <template>
   <NavigationBar />
+  <!-- <NavbarOffCanvas /> -->
   <div class="container my-5">
     <router-view></router-view>
   </div>
@@ -7,11 +8,13 @@
 
 <script>
 import NavigationBar from "./components/ui/NavigationBar.vue";
+// import NavbarOffCanvas from "./components/ui/NavbarOffCanvas.vue";
 
 export default {
   name: "App",
   components: {
     NavigationBar,
+    // NavbarOffCanvas,
   },
   data() {
     return {};

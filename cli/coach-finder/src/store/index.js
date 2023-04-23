@@ -7,6 +7,16 @@ const store = createStore({
     coach: coachModule,
     request: requestModule,
   },
+  state() {
+    return {
+      userId: 2,
+    };
+  },
+  getters: {
+    userId(state) {
+      return state.userId;
+    },
+  },
 });
 
 export default store;

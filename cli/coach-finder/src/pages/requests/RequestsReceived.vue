@@ -2,7 +2,7 @@
   <base-card>
     <div class="text-center">
       <h2 class="mb-3">Requests Received</h2>
-      <div class="d-flex flex-column justify-content-center align-items-center mx-3" v-if="hasRequest">
+      <div class="d-flex flex-column justify-content-center align-items-center mx-3" v-if="hastRequestCoach">
         <RequestItem v-for="req in paginationData" :key="req.id" :email="req.userEmail" :message="req.userMessage" />
         <div class="mt-3 ms-auto">
           <nav aria-label="Page navigation">
@@ -25,6 +25,7 @@
 
 <script>
 import RequestItem from "@/components/requests/RequestItem.vue";
+
 import { mapGetters } from "vuex";
 
 export default {
@@ -61,14 +62,14 @@ export default {
     },
   },
   computed: {
-    ...mapGetters("request", ["hasRequest"]),
+    ...mapGetters("request", ["hastRequestCoach"]),
     paginationData() {
-      const requests = this.$store.getters["request/listOfRequest"];
+      const requests = this.$store.getters["request/requests"];
       const FilteredRequest = requests.slice(this.dataStartIndex, this.dataStartIndex + this.perPage);
       return FilteredRequest;
     },
     navigationData() {
-      const requests = this.$store.getters["request/listOfRequest"];
+      const requests = this.$store.getters["request/requests"];
       const totalFilteredReq = requests.length;
       let numOfPage = 1;
       if (totalFilteredReq > this.perPage) {
@@ -81,7 +82,7 @@ export default {
       return naviData;
     },
     isDisabled() {
-      const requests = this.$store.getters["request/listOfRequest"];
+      const requests = this.$store.getters["request/requests"];
       const totalFilteredReq = requests.length;
       let numOfPage = 1;
       if (totalFilteredReq > this.navLimit) {
