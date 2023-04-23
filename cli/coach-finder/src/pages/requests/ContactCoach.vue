@@ -26,8 +26,18 @@ export default {
   methods: {
     submitForm() {
       if (this.email !== "" || this.message !== "") {
-        console.log();
+        this.$store.dispatch("request/addRequest", {
+          coachId: this.$route.params.id,
+          email: this.email,
+          message: this.message,
+        });
+
+        this.resetContactForm();
       }
+    },
+    resetContactForm() {
+      this.email = "";
+      this.message = "";
     },
   },
 };
