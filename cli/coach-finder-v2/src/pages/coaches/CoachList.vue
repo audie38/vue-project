@@ -1,21 +1,21 @@
 <template>
   <CoachFilter @coach-filter="coachActiveFilter" />
   <base-card>
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center mt-2 mx-3">
       <button @click="loadCoaches" class="btn border justify-content-start">Refresh</button>
-      <router-link to="/" v-if="!isCoach" class="btn btn-dark ms-auto">Register as Coach</router-link>
+      <router-link :to="{ name: 'coachRegistration' }" v-if="!isCoach" class="btn btn-dark ms-auto">Register as Coach</router-link>
     </div>
-    <div class="d-flex justify-content-center align-items-center" v-if="error">
+    <div class="d-flex justify-content-center align-items-center my-5" v-if="error">
       {{ error }}
     </div>
     <div v-else>
-      <div v-if="isLoading">
+      <div class="my-5" v-if="isLoading">
         <base-spinner />
       </div>
       <div v-else-if="coachExists && !isLoading && fetchCoachList.length > 0">
         <CoachItem v-for="coach in fetchCoachList" :key="coach.id" :data="coach" />
       </div>
-      <div class="text-center mt-5" v-else>
+      <div class="text-center my-5" v-else>
         <h3>No Coach Available</h3>
       </div>
     </div>

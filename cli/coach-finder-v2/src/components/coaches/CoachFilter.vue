@@ -1,7 +1,7 @@
 <template>
   <base-card>
-    <h3>Find Your Coach</h3>
-    <div class="d-flex flex-row justify-content-start align-items-start">
+    <h3 class="mx-3">Find Your Coach</h3>
+    <div class="d-flex flex-row justify-content-start align-items-start mx-3">
       <div>
         <input type="checkbox" name="frontend" id="frontend" value="frontend" checked v-model="expertise" @change="setFilter" />
         <label class="mx-2 text-capitalize" for="frontend">frontend</label>

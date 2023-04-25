@@ -1,5 +1,5 @@
 <template>
-  <div class="card shadow my-3 p-3 rounded-3">
+  <div class="card shadow m-3 p-3 rounded-3">
     <slot></slot>
   </div>
 </template>

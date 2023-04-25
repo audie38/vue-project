@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import CoachList from "@/pages/coaches/CoachList.vue";
 import CoachDetail from "@/pages/coaches/CoachDetail.vue";
+import CoachRegistration from "@/pages/coaches/CoachRegistration.vue";
 
 import RequestsList from "@/pages/requests/RequestsList.vue";
 
@@ -28,6 +29,14 @@ const routes = [
       title: "Coach Detail Page",
     },
     component: CoachDetail,
+  },
+  {
+    name: "coachRegistration",
+    path: "/register",
+    meta: {
+      title: "Coach Registration",
+    },
+    component: CoachRegistration,
   },
   {
     name: "requests",
