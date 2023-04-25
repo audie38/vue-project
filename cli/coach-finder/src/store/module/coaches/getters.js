@@ -1,12 +1,14 @@
 export default {
   coaches(state) {
+    console.log(state.coaches);
     return state.coaches;
   },
   hasCoaches(state) {
     return state.coaches && state.coaches.length > 0;
   },
-  isCoach(state, _, rootState) {
-    const userId = rootState.userId;
-    return state.coaches.find((coach) => coach.id == userId) !== undefined;
+  isCoach(state, getters, _2, rootGetters) {
+    const coaches = state.coaches;
+    const userId = rootGetters.userId;
+    return coaches.some((coach) => coach.id === userId);
   },
 };
