@@ -1,28 +1,24 @@
 <template>
-  <base-card>
-    <h2 class="mt-1 mb-4">Register as a Coach now!</h2>
-
-    <CoachForm @register-coach="addCoach" />
-  </base-card>
+  <section>
+    <base-card>
+      <h2>Register as a coach now!</h2>
+      <coach-form @save-data="saveData"></coach-form>
+    </base-card>
+  </section>
 </template>
 
 <script>
-import CoachForm from "@/components/coaches/CoachForm.vue";
+import CoachForm from '../../components/coaches/CoachForm.vue';
 
 export default {
-  name: "CoachRegistration",
   components: {
     CoachForm,
   },
   methods: {
-    addCoach(data) {
-      if (confirm("Submit Coach Registration ?")) {
-        this.$store.dispatch("coach/registerCoach", data);
-        this.$router.replace("/");
-      }
-    },
-  },
+    saveData(data) {
+      this.$store.dispatch('coaches/registerCoach', data);
+      this.$router.replace('/coaches');
+    }
+  }
 };
 </script>
-
-<style></style>

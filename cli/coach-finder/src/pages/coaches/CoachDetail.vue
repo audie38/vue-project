@@ -1,70 +1,58 @@
 <template>
-  <base-card>
-    <h2 class="fw-bold">{{ fullName }}</h2>
-    <h3>${{ rate }}/hour</h3>
-  </base-card>
-  <base-card>
-    <h2 class="fw-bold">Interested? Reach out now!</h2>
-    <button @click="isContact = !isContact" class="btn btn-dark w-25">Contact</button>
-    <ContactCoach v-if="isContact" />
-  </base-card>
-  <base-card>
-    <div class="d-flex justify-content-start align-items-center mb-1">
-      <span v-for="area in areas" :key="area" :class="colorByVal(area)">{{ area }}</span>
-    </div>
-    <p>{{ description }}</p>
-  </base-card>
+  <div>
+    <section>
+      <base-card>
+        <h2>{{ fullName }}</h2>
+        <h3>${{ rate }}/hour</h3>
+      </base-card>
+    </section>
+    <section>
+      <base-card>
+        <header>
+          <h2>Interested? Reach out now!</h2>
+          <base-button link :to="contactLink">Contact</base-button>
+        </header>
+        <router-view></router-view>
+      </base-card>
+    </section>
+    <section>
+      <base-card>
+        <base-badge v-for="area in areas" :key="area" :type="area" :title="area"></base-badge>
+        <p>{{ description }}</p>
+      </base-card>
+    </section>
+  </div>
 </template>
 
 <script>
-import ContactCoach from "../requests/ContactCoach.vue";
-
 export default {
-  name: "CoachDetail",
-  components: {
-    ContactCoach,
-  },
-  props: ["id"],
+  props: ['id'],
   data() {
     return {
-      coach: {},
-      isContact: false,
-      badgeClass: "badge p-2 me-1 text-uppercase text-bg-",
+      selectedCoach: null,
     };
-  },
-  methods: {
-    colorByVal(val) {
-      if (val.toLowerCase() === "frontend") {
-        return this.badgeClass + "primary";
-      } else if (val.toLowerCase() === "backend") {
-        return this.badgeClass + "warning";
-      } else {
-        return this.badgeClass + "danger";
-      }
-    },
   },
   computed: {
     fullName() {
-      return `${this.coach.firstName} ${this.coach.lastName}`;
+      return this.selectedCoach.firstName + ' ' + this.selectedCoach.lastName;
     },
     areas() {
-      return this.coach.areas;
+      return this.selectedCoach.areas;
     },
     rate() {
-      return this.coach.hourlyRate;
+      return this.selectedCoach.hourlyRate;
     },
     description() {
-      return this.coach.description;
+      return this.selectedCoach.description;
     },
-    coachContactLink() {
-      return `${this.$route.path}/contact`;
+    contactLink() {
+      return this.$route.path + '/' + this.id + '/contact';
     },
   },
   created() {
-    this.isContact = this.$route.fullPath.includes("/contact");
-    this.coach = this.$store.getters["coach/coaches"].find((x) => x.id == this.id);
+    this.selectedCoach = this.$store.getters['coaches/coaches'].find(
+      (coach) => coach.id === this.id
+    );
   },
 };
 </script>
-
-<style></style>

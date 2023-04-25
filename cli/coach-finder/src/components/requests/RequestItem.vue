@@ -1,38 +1,42 @@
 <template>
-  <base-card class="w-100 shadow-sm">
-    <div class="d-flex flex-column justify-content-start align-items-start">
+  <li>
+    <div>
       <a :href="emailLink">{{ email }}</a>
-      <span>{{ message }}</span>
     </div>
-  </base-card>
+    <p>{{ message }}</p>
+  </li>
 </template>
 
 <script>
 export default {
-  name: "RequestItem",
-  props: {
-    email: {
-      type: String,
-      required: false,
-      default: "",
-    },
-    message: {
-      type: String,
-      required: false,
-      default: "",
-    },
-  },
+  props: ['email', 'message'],
   computed: {
     emailLink() {
-      return `mailto:${this.email}`;
-    },
-  },
-};
+      return 'mailto:' + this.email;
+    }
+  }
+}
 </script>
 
 <style scoped>
+li {
+  margin: 1rem 0;
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
 a {
+  color: #3d008d;
   text-decoration: none;
-  color: #7811f0;
+  font-weight: bold;
+}
+
+a:hover,
+a:active {
+  color: #8d007a;
+}
+
+p {
+  margin: 0.5rem 0 0 0;
 }
 </style>

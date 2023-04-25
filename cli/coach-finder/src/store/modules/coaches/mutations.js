@@ -5,7 +5,7 @@ export default {
   setCoaches(state, payload) {
     state.coaches = payload;
   },
-  setIsRegistered(state, payload) {
-    state.isRegistered = payload;
-  },
+  setFetchTimestamp(state) {
+    state.lastFetch = new Date().getTime();
+  }
 };
