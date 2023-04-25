@@ -15,7 +15,6 @@ export default {
   },
   methods: {
     registerCoach(data) {
-      console.log(data);
       this.$store.dispatch("coach/registerNewCoach", data);
     },
   },

@@ -7,6 +7,7 @@ const requestModule = {
   state() {
     return {
       requests: [],
+      coachHasReq: false,
     };
   },
   mutations,

@@ -75,7 +75,6 @@ export default {
       try {
         await this.$store.dispatch("request/sendMessage", requestData);
       } catch (err) {
-        console.log(err);
         alert(`Failed to send message! err: ${err}`);
         this.isLoading = false;
       }

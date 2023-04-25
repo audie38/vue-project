@@ -9,7 +9,7 @@ const store = createStore({
   },
   state() {
     return {
-      userId: "c4",
+      userId: "-NTsdHmkaiH5yimBQr34", //"-NTsdHmkaiH5yimBQr34", //"-NTsj0qmVTxJA0xUwOQ2",
     };
   },
   getters: {
