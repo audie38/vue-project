@@ -5,7 +5,8 @@ export default {
   hasCoaches(state) {
     return state.coaches && state.coaches.length > 0;
   },
-  isCoach(state) {
-    return state.isCoach;
+  isCoach(state, _, rootState) {
+    const userId = rootState.userId;
+    return state.coaches.find((coach) => coach.id == userId) !== undefined;
   },
 };
