@@ -31,6 +31,15 @@ const routes = [
     component: CoachDetail,
   },
   {
+    name: "coachesContact",
+    path: "/coaches/:id/contact",
+    props: true,
+    meta: {
+      title: "Contact Coach",
+    },
+    component: CoachDetail,
+  },
+  {
     name: "coachRegistration",
     path: "/register",
     meta: {

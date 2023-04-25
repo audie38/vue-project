@@ -12,6 +12,11 @@ const store = createStore({
       userId: "c4",
     };
   },
+  getters: {
+    currentLoggedInUser(state) {
+      return state.userId;
+    },
+  },
 });
 
 export default store;

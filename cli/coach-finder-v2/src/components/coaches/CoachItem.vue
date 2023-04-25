@@ -7,8 +7,8 @@
     </div>
     <div class="d-flex align-items-center mt-3">
       <div class="ms-auto">
-        <router-link to="/" class="btn btn-outline-dark me-2">Contact</router-link>
-        <router-link to="/" class="btn btn-dark me-2">View Details</router-link>
+        <router-link :to="contactCoachLink" class="btn btn-outline-dark me-2">Contact</router-link>
+        <router-link :to="coachDetailLink" class="btn btn-dark me-2">View Details</router-link>
       </div>
     </div>
   </base-card>
@@ -52,6 +52,12 @@ export default {
   computed: {
     fullName() {
       return `${this.data.firstName} ${this.data.lastName}`;
+    },
+    contactCoachLink() {
+      return `${this.$route.path}/${this.data.id}/contact`;
+    },
+    coachDetailLink() {
+      return `${this.$route.path}/${this.data.id}`;
     },
   },
   created() {},
