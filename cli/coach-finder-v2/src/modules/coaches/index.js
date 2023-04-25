@@ -3,8 +3,12 @@ import actions from "./actions.js";
 import getters from "./getters.js";
 
 const coachModule = {
+  namespaced: true,
   state() {
-    return {};
+    return {
+      coaches: [],
+      isCoach: false,
+    };
   },
   mutations,
   actions,

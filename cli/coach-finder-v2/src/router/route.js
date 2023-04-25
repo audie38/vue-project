@@ -13,6 +13,7 @@ const routes = [
     redirect: "/coaches",
   },
   {
+    name: "coaches",
     path: "/coaches",
     meta: {
       title: "Coach List",
@@ -20,6 +21,7 @@ const routes = [
     component: CoachList,
   },
   {
+    name: "coachesDetail",
     path: "/coaches/:id",
     props: true,
     meta: {
@@ -28,6 +30,7 @@ const routes = [
     component: CoachDetail,
   },
   {
+    name: "requests",
     path: "/requests",
     meta: {
       title: "Requests List",

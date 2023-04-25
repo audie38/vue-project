@@ -3,6 +3,7 @@ import actions from "./actions.js";
 import getters from "./getters.js";
 
 const requestModule = {
+  namespaced: true,
   state() {
     return {};
   },
