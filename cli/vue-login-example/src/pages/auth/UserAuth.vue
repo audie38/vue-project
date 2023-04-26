@@ -1,7 +1,11 @@
 <template>
   <div class="d-flex justify-content-center align-items-center">
-    <base-card class="w-75">
-      <LoginForm @submit-login="login" />
+    <base-card v-if="isLoggedIn" class="w-75">
+      <h1>Welcome</h1>
+    </base-card>
+    <base-card v-else class="w-75">
+      <base-alert v-if="error" mode="danger" :message="error" />
+      <LoginForm v-if="!isLoggedIn" @submit-login="login" />
     </base-card>
   </div>
 </template>
@@ -14,9 +18,24 @@ export default {
   components: {
     LoginForm,
   },
+  data() {
+    return {
+      isLoggedIn: false,
+      isLoading: false,
+      error: null,
+    };
+  },
   methods: {
-    login(account) {
-      console.log(JSON.stringify(account));
+    async login(account) {
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch("login", account);
+        this.isLoading = false;
+        this.isLoggedIn = true;
+      } catch (error) {
+        this.error = error;
+        this.isLoading = false;
+      }
     },
   },
 };

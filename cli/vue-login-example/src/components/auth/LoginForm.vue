@@ -1,5 +1,4 @@
 <template>
-  <base-alert v-if="isInvalid" mode="danger" message="Invalid Account" />
   <form @submit.prevent="login">
     <div class="mb-3">
       <label for="userEmail" class="form-label fw-bold">Email</label>
@@ -10,7 +9,11 @@
       <input type="password" class="form-control" id="userPassword" v-model.trim="password" @change="isInvalid = false" required />
     </div>
     <div class="mb-2">
-      <button type="submit" class="btn btn-dark w-100">Login</button>
+      <button v-if="isLoading" class="btn btn-dark w-100" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Login
+      </button>
+      <button v-else type="submit" class="btn btn-dark w-100">Login</button>
     </div>
     <div class="text-center">
       <span>Don't Have account? <router-link :to="{ name: 'signup' }">Sign Up</router-link></span>
@@ -27,6 +30,13 @@ export default {
       email: "",
       password: "",
     };
+  },
+  props: {
+    isLoading: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   emits: ["submit-login"],
   methods: {

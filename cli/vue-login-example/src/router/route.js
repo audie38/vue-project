@@ -7,16 +7,11 @@ const NotFound = defineAsyncComponent(() => import("@/pages/NotFound.vue"));
 
 const routes = [
   {
-    name: "home",
-    path: "/",
-    redirect: "/login",
-  },
-  {
     name: "login",
-    path: "/login",
+    path: "/",
     component: UserAuth,
     meta: {
-      title: "Login",
+      title: "Home",
     },
   },
   {
