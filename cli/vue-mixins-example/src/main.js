@@ -1,8 +1,12 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import loggerMixin from "@/mixins/logger.js";
+import { createApp } from 'vue';
+
+import BaseSearch from './components/UI/BaseSearch.vue';
+import BaseContainer from './components/UI/BaseContainer.vue';
+import App from './App.vue';
 
 const app = createApp(App);
-app.mixin(loggerMixin);
 
-app.mount("#app");
+app.component('base-search', BaseSearch);
+app.component('base-container', BaseContainer);
+
+app.mount('#app');
