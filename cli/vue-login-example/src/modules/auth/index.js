@@ -3,9 +3,12 @@ import actions from "./actions.js";
 import getters from "./getters.js";
 
 const AuthModule = {
-  namespaced: true,
   state() {
-    return {};
+    return {
+      userId: null,
+      token: null,
+      tokenExpiration: null,
+    };
   },
   mutations,
   actions,
