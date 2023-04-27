@@ -1,11 +1,8 @@
 <template>
   <div class="d-flex justify-content-center align-items-center">
-    <base-card v-if="isLoggedIn" class="w-75">
-      <h1>Welcome</h1>
-    </base-card>
-    <base-card v-else class="w-75">
+    <base-card class="w-75">
       <base-alert v-if="error" mode="danger" :message="error" />
-      <LoginForm v-if="!isLoggedIn" @submit-login="login" />
+      <LoginForm @submit-login="login" />
     </base-card>
   </div>
 </template>
@@ -20,7 +17,6 @@ export default {
   },
   data() {
     return {
-      isLoggedIn: false,
       isLoading: false,
       error: null,
     };
@@ -31,7 +27,7 @@ export default {
       try {
         await this.$store.dispatch("login", account);
         this.isLoading = false;
-        this.isLoggedIn = true;
+        this.$router.replace({ name: "protected" });
       } catch (error) {
         this.error = error;
         this.isLoading = false;

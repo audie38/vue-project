@@ -7,9 +7,9 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <router-link class="nav-link" to="/">Home</router-link>
-          <router-link class="nav-link" to="/">About</router-link>
+        <div class="navbar-nav ms-auto1">
+          <button @click="logout" v-if="isLoggedIn" class="btn btn-danger">Logout</button>
+          <button @click="login" v-else class="btn btn-success">Login</button>
         </div>
       </div>
     </div>
@@ -19,5 +19,19 @@
 <script>
 export default {
   name: "NavigationBar",
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters["isAuthenticated"];
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+      this.$router.replace({ name: "home" });
+    },
+    login() {
+      this.$router.replace({ name: "login" });
+    },
+  },
 };
 </script>

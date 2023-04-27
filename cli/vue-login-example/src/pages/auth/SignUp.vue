@@ -29,7 +29,7 @@ export default {
         await this.$store.dispatch("signup", data);
         this.isLoading = false;
         alert("Register Success!");
-        this.$router.replace({ name: "login" });
+        this.$router.replace({ name: "protected" });
       } catch (err) {
         console.log("Catch error: ", err.message);
         this.error = err;
