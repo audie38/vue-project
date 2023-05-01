@@ -1,15 +1,18 @@
 <template>
   <base-card>
-    <router-link to="/" class="d-flex justify-content-around align-items-center nav-link">
+    <router-link :to="editTrxLink" class="d-flex justify-content-around align-items-center nav-link">
       <span class="me-auto">{{ transactionDesc(transaction.categoryId) }}</span>
-      <span :class="transactionColor(transaction.transactionType)">Rp {{ transaction.transactionAmount }}</span>
+      <span :class="transactionColor(transaction.transactionType)">{{ formatCurrency(transaction.transactionAmount) }}</span>
     </router-link>
   </base-card>
 </template>
 
 <script>
+import formatMixin from "@/mixins/format.js";
+
 export default {
   name: "TrxItem",
+  mixins: [formatMixin],
   props: {
     transaction: {
       type: Object,
@@ -36,6 +39,11 @@ export default {
       }
     },
   },
-  computed: {},
+  computed: {
+    editTrxLink() {
+      return `/trx/${this.transaction.id}`;
+    },
+  },
+  created() {},
 };
 </script>

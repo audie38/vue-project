@@ -2,25 +2,28 @@
   <base-card>
     <div class="d-flex flex-column justify-content-start">
       <div class="d-flex justify-content-around">
-        <h3 class="me-autp">Inflow</h3>
-        <h3 class="ms-auto text-primary">Rp {{ inflow }}</h3>
+        <h3 class="me-auto">Inflow</h3>
+        <h3 class="ms-auto text-primary">{{ formatCurrency(inflow) }}</h3>
       </div>
 
       <div class="d-flex justify-content-around">
-        <h3 class="me-autp">Outflow</h3>
-        <h3 class="ms-auto text-danger">Rp {{ outflow }}</h3>
+        <h3 class="me-auto">Outflow</h3>
+        <h3 class="ms-auto text-danger">{{ formatCurrency(outflow) }}</h3>
       </div>
       <hr class="w-50 ms-auto" />
       <div class="ms-auto">
-        <h3 :class="cashFlowDif">Rp {{ inflow - outflow }}</h3>
+        <h3 :class="cashFlowDif">{{ formatCurrency(inflow - outflow) }}</h3>
       </div>
     </div>
   </base-card>
 </template>
 
 <script>
+import formatMixin from "@/mixins/format.js";
+
 export default {
   name: "TrxSummary",
+  mixins: [formatMixin],
   data() {
     return {};
   },

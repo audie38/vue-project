@@ -1,12 +1,12 @@
 <template>
   <TrxSummary />
   <div class="d-flex">
-    <router-link to="/" class="btn btn-dark ms-auto">Add New Transaction</router-link>
+    <router-link :to="{ name: 'trxDetail' }" class="btn btn-dark ms-auto">Add New Transaction</router-link>
   </div>
   <base-card v-for="td in listOfTrxDt" :key="td">
     <div class="d-flex justify-content-around">
       <h3 class="me-auto">{{ td }}</h3>
-      <h3 :class="trxColorClass(totalTrx(td))">{{ totalTrx(td) }}</h3>
+      <h3 :class="trxColorClass(totalTrx(td))">{{ formatCurrency(totalTrx(td)) }}</h3>
     </div>
     <hr class="w-100" />
     <TrxItem v-for="trx in listOfTrx(td)" :key="trx.id" :transaction="trx" />
@@ -14,11 +14,14 @@
 </template>
 
 <script>
+import formatMixin from "@/mixins/format.js";
+
 import TrxSummary from "@/components/transaction/TrxSummary.vue";
 import TrxItem from "@/components/transaction/TrxItem.vue";
 
 export default {
   name: "TrxHome",
+  mixins: [formatMixin],
   components: {
     TrxSummary,
     TrxItem,

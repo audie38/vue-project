@@ -2,11 +2,12 @@ import { createRouter, createWebHistory } from "vue-router";
 import { defineAsyncComponent } from "vue";
 import store from "@/modules/store.js";
 
-const TrxHome = defineAsyncComponent(() => import("@/pages/transaction/TrxHome"));
+const TrxHome = defineAsyncComponent(() => import("@/pages/transaction/TrxHome.vue"));
 const AuthLogin = defineAsyncComponent(() => import("@/pages/auth/AuthLogin.vue"));
 const AuthRegister = defineAsyncComponent(() => import("@/pages/auth/AuthRegister.vue"));
 const NotFound = defineAsyncComponent(() => import("@/pages/NotFound.vue"));
-const WalletAddEdit = defineAsyncComponent(() => import("@/pages/wallet/WalletAddEdit.vue"));
+const TrxAdd = defineAsyncComponent(() => import("@/pages/transaction/TrxAdd.vue"));
+const TrxEdit = defineAsyncComponent(() => import("@/pages/transaction/TrxEdit.vue"));
 
 const routes = [
   {
@@ -37,11 +38,21 @@ const routes = [
     },
   },
   {
-    name: "walletDetail",
-    path: "/wallet/:id",
-    component: WalletAddEdit,
+    name: "trxDetail",
+    path: "/trx",
+    component: TrxAdd,
     meta: {
-      title: "Money Tracker | Wallet",
+      title: "Money Tracker | Add Transaction Detail",
+      isAuthRequired: true,
+    },
+  },
+  {
+    name: "trxEdit",
+    path: "/trx/:id",
+    component: TrxEdit,
+    props: true,
+    meta: {
+      title: "Money Tracker | Edit Transaction Detail",
       isAuthRequired: true,
     },
   },
