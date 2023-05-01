@@ -9,9 +9,10 @@ const authModule = {
       isAuth: false,
       user: {
         userId: 1,
-        userName: "Milson",
-        password: "test123",
+        firstName: "test",
+        lastName: "123",
         email: "test@localhost.com",
+        password: "test123",
       },
     };
   },
