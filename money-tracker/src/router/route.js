@@ -6,6 +6,7 @@ const TrxHome = defineAsyncComponent(() => import("@/pages/transaction/TrxHome")
 const AuthLogin = defineAsyncComponent(() => import("@/pages/auth/AuthLogin.vue"));
 const AuthRegister = defineAsyncComponent(() => import("@/pages/auth/AuthRegister.vue"));
 const NotFound = defineAsyncComponent(() => import("@/pages/NotFound.vue"));
+const WalletAddEdit = defineAsyncComponent(() => import("@/pages/wallet/WalletAddEdit.vue"));
 
 const routes = [
   {
@@ -33,6 +34,15 @@ const routes = [
     meta: {
       title: "Money Tracker | Register",
       isAuthRequired: false,
+    },
+  },
+  {
+    name: "walletDetail",
+    path: "/wallet/:id",
+    component: WalletAddEdit,
+    meta: {
+      title: "Money Tracker | Wallet",
+      isAuthRequired: true,
     },
   },
   {

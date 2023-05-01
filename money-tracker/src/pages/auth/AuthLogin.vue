@@ -26,7 +26,7 @@ export default {
           this.$store.dispatch("auth/auth", { value: true });
           this.isLoading = false;
           this.$router.replace({ name: "home" });
-        }, 2000);
+        }, 500);
       } catch (error) {
         this.message = error;
         this.isLoading = false;

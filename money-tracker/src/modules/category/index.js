@@ -9,13 +9,11 @@ const categoryModule = {
       category: [
         {
           id: 1,
-          categoryCode: "Shopping",
-          transactionType: "expense",
+          categoryCode: "Salary",
         },
         {
           id: 2,
-          categoryCode: "Salary",
-          transactionType: "income",
+          categoryCode: "Shopping",
         },
       ],
     };
