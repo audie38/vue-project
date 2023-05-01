@@ -1,1 +1,5 @@
-export default {};
+export default {
+  ListWallet(state) {
+    return state.wallet;
+  },
+};

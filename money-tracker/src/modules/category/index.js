@@ -2,24 +2,20 @@ import mutations from "./mutations.js";
 import actions from "./actions.js";
 import getters from "./getters.js";
 
-const trxModule = {
+const categoryModule = {
   namespaced: true,
   state() {
     return {
-      transaction: [
+      category: [
         {
           id: 1,
-          walletId: 1,
-          categoryId: 1,
-          transactionAmount: 0,
-          transactionNotes: "",
+          categoryCode: "Shopping",
+          transactionType: "expense",
         },
         {
           id: 2,
-          walletId: 1,
-          categoryId: 2,
-          transactionAmount: 0,
-          transactionNotes: "",
+          categoryCode: "Salary",
+          transactionType: "income",
         },
       ],
     };
@@ -29,4 +25,4 @@ const trxModule = {
   getters,
 };
 
-export default trxModule;
+export default categoryModule;

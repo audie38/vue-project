@@ -5,7 +5,15 @@ import getters from "./getters.js";
 const authModule = {
   namespaced: true,
   state() {
-    return {};
+    return {
+      isAuth: false,
+      user: {
+        userId: 1,
+        userName: "Milson",
+        password: "test123",
+        email: "test@localhost.com",
+      },
+    };
   },
   mutations,
   actions,
