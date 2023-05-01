@@ -13,6 +13,11 @@ export default {
   components: {
     NavigationBar,
   },
+  watch: {
+    $route(to) {
+      document.title = to.meta.title;
+    },
+  },
 };
 </script>
 

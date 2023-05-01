@@ -13,6 +13,7 @@ const trxModule = {
           categoryId: 1,
           transactionAmount: 0,
           transactionNotes: "",
+          transactionDate: "2023-05-01",
         },
         {
           id: 2,
@@ -20,6 +21,7 @@ const trxModule = {
           categoryId: 2,
           transactionAmount: 0,
           transactionNotes: "",
+          transactionDate: "2023-05-01",
         },
       ],
     };
